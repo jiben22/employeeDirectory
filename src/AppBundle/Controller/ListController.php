@@ -13,6 +13,13 @@ class ListController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('list.html');
+        $employees = $this
+        ->getDoctrine()
+        ->getRepository('AppBundle:Employee')
+        ->findAll();
+
+        var_dump($employees);
+
+        return $this->render('templates/list.html.twig');
     }
 }
