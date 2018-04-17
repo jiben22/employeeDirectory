@@ -11,7 +11,7 @@ class ListController extends Controller
     /**
      * @Route("/", name="list")
      */
-    public function indexAction(Request $request)
+    public function listEmployeesAction(Request $request)
     {
         $employees = $this
         ->getDoctrine()

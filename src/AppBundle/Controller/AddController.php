@@ -10,7 +10,6 @@ use AppBundle\Entity\Employee;
 use AppBundle\Entity\Skill;
 use AppBundle\Form\EmployeeType;
 
-
 class AddController extends Controller
 {
     /**
