@@ -1,0 +1,42 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Ajouter un employé{% endblock %}
+
+{% block body %}
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h2>Détails de l'employé</h2>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+                <h3>{{ employee.lastname }} {{ employee.firstname }}</h3>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Nom: {{ employee.lastname }}</p>
+                    <p>Prénom: {{ employee.firstname }}</p>
+                    <p>Age: {{ employee.age }} ans</p>
+                    <p>Intitulé du poste: {{ employee.job }}</p>
+                    <p>Téléphone: {{ employee.phone }}</p>
+
+                    <h4>Localisation</h4>
+                    {% set environment = employee.environment %}
+                    <p>Bâtiment: {{ environment.building }}</p>
+                    <p>Bureau: {{ environment.deskroom }}</p>
+
+                    <h4>Compétences<h4>
+                    <ul>
+                    {% for skill in employee.skills %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{% endblock %}
