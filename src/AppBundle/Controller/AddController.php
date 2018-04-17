@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\Employee;
+use AppBundle\Entity\Skill;
 use AppBundle\Form\EmployeeType;
 
 
@@ -15,7 +16,7 @@ class AddController extends Controller
     /**
      * @Route("/add", name="add")
      */
-    public function indexAction(Request $request)
+    public function addEmployeeAction(Request $request)
     {
         $employee = new Employee();
         $form = $this->createForm(EmployeeType::class, $employee);
@@ -23,41 +24,18 @@ class AddController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $dataEmployee = $form->getData();
+            $employee = $form->getData();
 
-            //Call function to save employee
-            $this->addEmployee($dataEmployee);
+            $entityManager = $this->getDoctrine()->getManager();
 
-            return $this->redirectToRoute('homepage');
+            $entityManager->persist($employee);            
+            $entityManager->flush();
+
+            return $this->redirectToRoute('list');
         }
 
         return $this->render('templates/add.html.twig', array(
             'form' => $form->createView(),
         ));
-    }
-
-    public function addEmployee($dataEmployee)
-    {
-        //Create a new Employee
-        $employee = new Employee();
-
-        //Entity manager
-        $em = $this->getDoctrine()->getManager();
-
-        //Add attributes for employee
-        $employee->setLastname($dataEmployee['lastname']);
-        $employee->Firstname($dataEmployee['firstname']);
-        $employee->setAge($dataEmployee['age']);
-        $employee->setJob($dataEmployee['job']);
-        $employee->setPhone($dataEmployee['phone']);
-        //Add object environment
-        $employee->setEnvironment($dataEmployee['environment']);
-
-        //Don't forget the adding of skills if the people having it
-
-
-        $entityManager->persist($employee);
-        $entityManager->flush();
-
     }
 }

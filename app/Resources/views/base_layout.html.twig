@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employés{% block title %}{% endblock %}</title>
-    {% block stylesheets %}
         <!-- BOOTSTRAP STYLES-->
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -17,7 +16,9 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <!-- TABLE STYLES-->
         <link href="{{ asset('js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
-    {% endblock %}
+
+        {% block stylesheets %}
+        {% endblock %}
 </head>
 <body>
     <div id="wrapper">
@@ -49,10 +50,10 @@
 					</li>
 
                     <li>
-                        <a class="active-menu"  href="list.html.twig"><i class="fa fa-book fa-2x"></i>Consulter l'annuaire</a>
+                        <a class="active-menu"  href="{{ path('list') }}"><i class="fa fa-book fa-2x"></i>Consulter l'annuaire</a>
                     </li>
                     <li>
-                        <a href="add.html"><i class="fa fa-plus fa-2x"></i>Ajouter un employé</a>
+                        <a href="{{ path('add') }}"><i class="fa fa-plus fa-2x"></i>Ajouter un employé</a>
                     </li>
             </div>
 

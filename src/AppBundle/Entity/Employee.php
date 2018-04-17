@@ -58,14 +58,14 @@ class Employee
     private $phone;
 
     /**
-     * @ORM\OneToOne(targetEntity="Environment")
+     * @ORM\OneToOne(targetEntity="Environment", cascade={"persist"})
      */
     private $environment;
 
     /**
-     * @ORM\OneToMany(targetEntity="Skills", mappedBy="employee")
+     * @ORM\OneToMany(targetEntity="Skill", mappedBy="employee")
      */
-    private $skills;
+    public $skills;
 
 
     public function __construct()

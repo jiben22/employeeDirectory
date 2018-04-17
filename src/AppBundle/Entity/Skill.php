@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="skills")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SkillsRepository")
  */
-class Skills
+class Skill
 {
     /**
      * @var int
@@ -49,7 +49,7 @@ class Skills
      *
      * @param string $denomination
      *
-     * @return Skills
+     * @return Skill
      */
     public function setDenomination($denomination)
     {
@@ -73,7 +73,7 @@ class Skills
      *
      * @param \AppBundle\Entity\Employee $employee
      *
-     * @return Skills
+     * @return Skill
      */
     public function setEmployee(\AppBundle\Entity\Employee $employee = null)
     {

@@ -18,8 +18,8 @@ class ListController extends Controller
         ->getRepository('AppBundle:Employee')
         ->findAll();
 
-        var_dump($employees);
-
-        return $this->render('templates/list.html.twig');
+        return $this->render('templates/list.html.twig', array(
+            'employees' => $employees,
+        ));
     }
 }

@@ -48,7 +48,7 @@ class EmployeeType extends AbstractType
             'required' => true
         ))
         ->add('skills', EntityType::class, array(
-            'class' => 'AppBundle:Skills',
+            'class' => 'AppBundle:Skill',
             'choice_label' => 'denomination',
         ))
         ->add('submit', SubmitType::class, array(
