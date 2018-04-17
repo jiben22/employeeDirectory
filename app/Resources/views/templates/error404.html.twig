@@ -1,0 +1,15 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Editer l'employé{% endblock %}
+
+{% block body %}
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <h1>Erreur !</h1>
+                <h1>L'employé n'existe pas</h1>
+                <h3><a href="{{ path('list') }}">Retour vers l'annuaire</a></h3>
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{% endblock %}

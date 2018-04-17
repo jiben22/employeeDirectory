@@ -22,12 +22,12 @@
                     <p>Intitulé du poste: {{ employee.job }}</p>
                     <p>Téléphone: {{ employee.phone }}</p>
 
-                    <h4>Localisation</h4>
+                    <h3>Localisation</h3>
                     {% set environment = employee.environment %}
                     <p>Bâtiment: {{ environment.building }}</p>
                     <p>Bureau: {{ environment.deskroom }}</p>
 
-                    <h4>Compétences<h4>
+                    <h3>Compétences<h3>
                     <ul>
                     {% for skill in employee.skills %}
                         <li>{{ skill }}</li>
