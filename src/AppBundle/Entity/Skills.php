@@ -28,6 +28,11 @@ class Skills
      */
     private $denomination;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="skills")
+     */
+    private $employee;
+
 
     /**
      * Get id
@@ -62,5 +67,28 @@ class Skills
     {
         return $this->denomination;
     }
-}
 
+    /**
+     * Set employee
+     *
+     * @param \AppBundle\Entity\Employee $employee
+     *
+     * @return Skills
+     */
+    public function setEmployee(\AppBundle\Entity\Employee $employee = null)
+    {
+        $this->employee = $employee;
+
+        return $this;
+    }
+
+    /**
+     * Get employee
+     *
+     * @return \AppBundle\Entity\Employee
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+}

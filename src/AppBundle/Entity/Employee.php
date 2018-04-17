@@ -56,7 +56,22 @@ class Employee
      */
     private $phone;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Environment")
+     */
+    private $environment;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Skills", mappedBy="employee")
+     */
+    private $skills;
+
+
+    public function __construct()
+    {
+        $this->skills = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -186,5 +201,62 @@ class Employee
     {
         return $this->phone;
     }
-}
 
+    /**
+     * Set environment
+     * 
+     * @param Environment $environment
+     * 
+     * @return Employee
+     */
+    public function setEnvironment(Environment $environment)
+    {
+        $this->environment = $environment;
+
+        return $this;
+    }
+
+    /**
+     * Get environment
+     * 
+     * @return environment
+     */
+    public function GetEnvironment()
+    {
+        return $this->environment;
+    }
+
+    public function addSkills(Skill $skill)
+    {
+        $this->skills[] = $skill;
+    }
+
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * Add skill
+     *
+     * @param \AppBundle\Entity\Skills $skill
+     *
+     * @return Employee
+     */
+    public function addSkill(\AppBundle\Entity\Skills $skill)
+    {
+        $this->skills[] = $skill;
+
+        return $this;
+    }
+
+    /**
+     * Remove skill
+     *
+     * @param \AppBundle\Entity\Skills $skill
+     */
+    public function removeSkill(\AppBundle\Entity\Skills $skill)
+    {
+        $this->skills->removeElement($skill);
+    }
+}
