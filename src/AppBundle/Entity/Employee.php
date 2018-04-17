@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +27,7 @@ class Employee
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=64)
+     * @Assert\NotBlank(), message = "Veuillez indiquer un vrai prénom !"
      */
     private $firstname;
 
@@ -33,6 +35,7 @@ class Employee
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=64)
+     * @Assert\NotBlank(), message = "Veuillez indiquer un vrai nom !"
      */
     private $lastname;
 
@@ -40,6 +43,7 @@ class Employee
      * @var int
      *
      * @ORM\Column(name="age", type="integer")
+     * @Assert\NotBlank(), message = "Veuillez indiquer un vrai age !"
      */
     private $age;
 
@@ -47,6 +51,7 @@ class Employee
      * @var string
      *
      * @ORM\Column(name="job", type="string", length=255)
+     * @Assert\NotBlank(), message = "Veuillez indiquer un vrai job !"
      */
     private $job;
 
@@ -54,11 +59,13 @@ class Employee
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
+     * @Assert\NotBlank(), message = "Veuillez indiquer un vrai numéro de téléphone !"
      */
     private $phone;
 
     /**
      * @ORM\OneToOne(targetEntity="Environment", cascade={"persist"})
+     * @Assert\NotBlank(), message = "Veuillez indiquer une vrai localisation !"
      */
     private $environment;
 
