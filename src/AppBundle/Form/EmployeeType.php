@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -47,9 +48,15 @@ class EmployeeType extends AbstractType
             'label' => 'Localisation',
             'required' => true
         ))
-        ->add('skills', EntityType::class, array(
-            'class' => 'AppBundle:Skill',
-            'choice_label' => 'denomination',
+        ->add('skills', CollectionType::class, array(
+            'label' => 'Compétences',
+            'entry_type' => EntityType::class,
+            'entry_options' => array(
+                'label' => false,
+                'class' => 'AppBundle\Entity\Skill',
+            ),
+            'allow_add' => true,
+            
         ))
         ->add('submit', SubmitType::class, array(
             'label' => 'Ajouter',

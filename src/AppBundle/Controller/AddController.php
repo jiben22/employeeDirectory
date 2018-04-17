@@ -25,6 +25,8 @@ class AddController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $employee = $form->getData();
 
+            var_dump($employee);
+
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->persist($employee);            

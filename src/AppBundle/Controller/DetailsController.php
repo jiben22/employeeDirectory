@@ -27,7 +27,7 @@ class DetailsController extends Controller
                 'employee' => $employee,
             ));
         } else {
-            return $this->redirectToRoute('list');
+            return $this->render('templates/error404.html.twig');
         }
     }
 }
