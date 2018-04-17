@@ -1,4 +1,0 @@
-services:
-#    employee_directory.example:
-#        class: EmployeeDirectoryBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

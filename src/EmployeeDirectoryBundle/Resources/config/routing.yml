@@ -1,3 +1,0 @@
-employee_directory_homepage:
-    path:     /
-    defaults: { _controller: EmployeeDirectoryBundle:Default:index }
