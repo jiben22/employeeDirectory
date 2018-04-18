@@ -52,9 +52,11 @@
                     <li>
                         <a class="active-menu"  href="{{ path('list') }}"><i class="fa fa-book fa-2x"></i>Consulter l'annuaire</a>
                     </li>
-                    <li>
-                        <a href="{{ path('add') }}"><i class="fa fa-plus fa-2x"></i>Ajouter un employé</a>
-                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('add') }}"><i class="fa fa-plus fa-2x"></i>Ajouter un employé</a>
+                        </li>
+                    {% endif %}
             </div>
 
         </nav>

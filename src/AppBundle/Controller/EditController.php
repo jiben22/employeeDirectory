@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -15,6 +16,7 @@ class EditController extends Controller
 {
     /**
      * @Route("/edit/{id}", name="edit")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editEmployeeAction(Request $request, $id)
     {

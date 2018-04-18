@@ -6,6 +6,7 @@ use AppBundle\Entity\Employee;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Employee controller.
@@ -19,6 +20,7 @@ class EmployeeController extends Controller
      *
      * @Route("/", name="employee_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_USER')")
      */
     public function indexAction()
     {
@@ -36,6 +38,7 @@ class EmployeeController extends Controller
      *
      * @Route("/{id}", name="employee_show")
      * @Method("GET")
+     * @Security("has_role('ROLE_USER')")
      */
     public function showAction(Employee $employee)
     {

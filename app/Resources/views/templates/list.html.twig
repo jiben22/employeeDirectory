@@ -48,15 +48,19 @@
                                             <td>{{ employee.firstname }}</td>
                                             <td>{{ employee.job }}</td>
                                             <td>
-                                                <a href="{{ path('edit', {'id': employee.id}) }}">
-                                                    <i class="fa fa-edit fa-2x" title="Edition"></i>
-                                                </a>
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <a href="{{ path('edit', {'id': employee.id}) }}">
+                                                        <i class="fa fa-edit fa-2x" title="Edition"></i>
+                                                    </a>
+                                                {% endif %}
                                                 <a href="{{ path('details', {'id': employee.id}) }}">
                                                     <i class="fa fa-eye fa-2x" title="Détails"></i>
                                                 </a>
-                                                <a href="{{ path('delete', {'id': employee.id}) }}">
-                                                    <i class="fa fa-trash fa-2x" title="Supprimer"></i></td>
-                                                </a>
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <a href="{{ path('delete', {'id': employee.id}) }}">
+                                                        <i class="fa fa-trash fa-2x" title="Supprimer"></i></td>
+                                                    </a>
+                                                {% endif %}
                                         </tr>
                                         {% endfor %}
                                     </tbody>
