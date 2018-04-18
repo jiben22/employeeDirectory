@@ -1,0 +1,15 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Accès interdit{% endblock %}
+
+{% block body %}
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <h1>Accès interdit !</h1>
+                <h1>Vous n'avez pas le droit d'accéder à cette page</h1>
+                <h3><a href="{{ path('list') }}">Retour vers l'annuaire</a></h3>
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{% endblock %}
