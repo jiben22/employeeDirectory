@@ -48,6 +48,7 @@ class EmployeeType extends AbstractType
             'label' => 'Localisation',
             'required' => true
         ))
+        /*
         ->add('skills', CollectionType::class, array(
             'label' => 'Compétences',
             'entry_type' => EntityType::class,
@@ -56,8 +57,8 @@ class EmployeeType extends AbstractType
                 'class' => 'AppBundle\Entity\Skill',
             ),
             'allow_add' => true,
-            
         ))
+        */
         ->add('submit', SubmitType::class, array(
             'label' => 'Ajouter',
         ));
