@@ -5,6 +5,7 @@ namespace Tests\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DefaultControllerTest extends WebTestCase
 {
@@ -57,8 +58,30 @@ class DefaultControllerTest extends WebTestCase
         $this->logIn();
         $crawler = $this->client->request('GET', '/add');
 
+        $form = $crawler->selectButton('Ajouter')->form();
+
+        // set some values
+        $form['appbundle_employee[lastname]'] = 'Lastname';
+        $form['appbundle_employee[firstname]'] = 'Firstname';
+        $form['appbundle_employee[age]'] = 25;
+        $form['appbundle_employee[job]'] = 'Job';
+        $form['appbundle_employee[phone]'] = '0670689578';
+        $form['appbundle_employee[dateDebut][day]'] = '01';
+        $form['appbundle_employee[dateDebut][month]'] = '01';
+        $form['appbundle_employee[dateDebut][year]'] = '2013';
+        $form['appbundle_employee[dateFin][day]'] = '01';
+        $form['appbundle_employee[dateFin][month]'] = '01';
+        $form['appbundle_employee[dateFin][year]'] = '2020';
+        $form['appbundle_employee[environment][building]'] = 'Bâtiment';
+        $form['appbundle_employee[environment][postalCode]'] = 22000;
+        $form['appbundle_employee[environment][deskroom]'] = 'Bureau';
+        // submit the form
+        $crawler = $this->client->submit($form);
+        
+        if ($this->client->getResponse()->isRedirection()) {
+            $this->client->followRedirect();
+        }
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        $this->assertEquals(1, $crawler->filter('h2:contains("Liste des employés")')->count());
     }
 }
