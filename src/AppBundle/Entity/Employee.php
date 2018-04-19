@@ -248,16 +248,6 @@ class Employee
         return $this->environment;
     }
 
-    public function addSkills(Skill $skill)
-    {
-        $this->skills[] = $skill;
-    }
-
-    public function getSkills()
-    {
-        return $this->skills;
-    }
-
     /**
      * Add skill
      *
@@ -265,7 +255,7 @@ class Employee
      *
      * @return Employee
      */
-    public function addSkill(\AppBundle\Entity\Skills $skill)
+    public function addSkill(\AppBundle\Entity\Skill $skill)
     {
         $this->skills[] = $skill;
 
@@ -277,7 +267,7 @@ class Employee
      *
      * @param \AppBundle\Entity\Skills $skill
      */
-    public function removeSkill(\AppBundle\Entity\Skills $skill)
+    public function removeSkill(\AppBundle\Entity\Skill $skill)
     {
         $this->skills->removeElement($skill);
     }
