@@ -13,6 +13,7 @@
                 <!-- /. ROW  -->
                 <hr />
                 <h3>{{ employee.lastname }} {{ employee.firstname }}</h3>
+                <hr />
 
             <div class="row">
                 <div class="col-md-12">
@@ -21,13 +22,15 @@
                     <p>Age: {{ employee.age }} ans</p>
                     <p>Intitulé du poste: {{ employee.job }}</p>
                     <p>Téléphone: {{ employee.phone }}</p>
-
+                    <br />
                     <h3>Localisation</h3>
+                    <hr />
                     {% set environment = employee.environment %}
                     <p>Bâtiment: {{ environment.building }}</p>
                     <p>Bureau: {{ environment.deskroom }}</p>
-
+                    <br />
                     <h3>Compétences<h3>
+                    <hr />
                     {% for skill in employee.skills %}
                         <span>| {{ skill.denomination }} | </span>
                     {% endfor %}
