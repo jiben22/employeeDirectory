@@ -50,4 +50,15 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
         $this->assertEquals(1, $crawler->filter('h2:contains("Liste des employés")')->count());
     }
+
+    public function testAddEmployee()
+    {
+        $this->setUp();
+        $this->logIn();
+        $crawler = $this->client->request('GET', '/add');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $this->assertEquals(1, $crawler->filter('h2:contains("Liste des employés")')->count());
+    }
 }
