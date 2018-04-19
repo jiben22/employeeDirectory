@@ -28,11 +28,9 @@
                     <p>Bureau: {{ environment.deskroom }}</p>
 
                     <h3>Compétences<h3>
-                    <ul>
                     {% for skill in employee.skills %}
-                        <li>{{ skill }}</li>
+                        <span>| {{ skill.denomination }} | </span>
                     {% endfor %}
-                    </ul>
                 </div>
             </div>
         </div>
