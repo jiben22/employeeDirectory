@@ -5,13 +5,16 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class LoginController extends Controller
+class LogoutController extends Controller
 {
     /**
-     * @Route("/", name="login")
+     * @Route("/logout", name="logout")
      */
-    public function indexAction()
+    public function logoutAction()
     {
+        $this->get('security.token_storage')->setToken(null);
+        $this->get('request')->getSession()->invalidate();
+
         return $this->redirectToRoute('fos_user_security_login');
 
     }
