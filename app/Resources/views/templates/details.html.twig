@@ -22,6 +22,8 @@
                     <p>Age: {{ employee.age }} ans</p>
                     <p>Intitulé du poste: {{ employee.job }}</p>
                     <p>Téléphone: {{ employee.phone }}</p>
+                    <p>Date de début de contrat: <strong>{{ employee.dateDebut|date('Y-m-d') }}</strong></p>
+                    <p>Date de fin de contrat: <strong>{{ employee.dateFin|date('Y-m-d') }}</strong></p>
                     <br />
                     <h3>Localisation</h3>
                     <hr />

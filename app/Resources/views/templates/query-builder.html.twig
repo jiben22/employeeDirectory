@@ -1,0 +1,47 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - QueryBuilder{% endblock %}
+
+{% block body %}
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h2>QueryBuilder</h2>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+                {% for employee in employees %}
+                    <h3>{{ employee.lastname }} {{ employee.firstname }}</h3>
+                    <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Nom: {{ employee.lastname }}</p>
+                        <p>Prénom: {{ employee.firstname }}</p>
+                        <p>Age: {{ employee.age }} ans</p>
+                        <p>Intitulé du poste: {{ employee.job }}</p>
+                        <p>Téléphone: {{ employee.phone }}</p>
+                        <p>Date de début de contrat: <strong>{{ employee.dateDebut|date('Y-m-d') }}</strong></p>
+                        <p>Date de fin de contrat: <strong>{{ employee.dateFin|date('Y-m-d') }}</strong></p>
+                        <br />
+                        <h3>Localisation</h3>
+                        <hr />
+                        {% set environment = employee.environment %}
+                        <p>Bâtiment: {{ environment.building }}</p>
+                        <p>Bureau: {{ environment.deskroom }}</p>
+                        <br />
+                        <h3>Compétences<h3>
+                        <hr />
+                        {% for skill in employee.skills %}
+                            <span>| {{ skill.denomination }} | </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{% endblock %}

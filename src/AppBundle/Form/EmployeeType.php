@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\ChoiceType;
 
@@ -42,6 +43,14 @@ class EmployeeType extends AbstractType
         ))
         ->add('phone', TextType::class, array(
             'label' => 'Téléphone',
+            'required' => true
+        ))
+        ->add('dateDebut', DateType::class, array(
+            'label' => 'Date dé début de contrat',
+            'required' => true
+        ))
+        ->add('dateFin', DateType::class, array(
+            'label' => 'Date de fin de contrat',
             'required' => true
         ))
         ->add('environment', EnvironmentType::class, array(

@@ -10,4 +10,27 @@ namespace AppBundle\Repository;
  */
 class EmployeeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByEmployeeName ($firstname) {
+        $queryBuilder = $this->createQueryBuilder('e')
+        ->where('e.firstname = :firstname')
+        ->setParameter('firstname', $firstname);
+
+        $query = $queryBuilder->getQuery();
+        $employeeName = $query->getResult();
+
+        return $employeeName;
+    }
+
+    public function findByEmployeesDate ($dateDebut, $dateFin) {
+        $queryBuilder = $this->createQueryBuilder('e')
+        ->where('e.dateFin < :dateFin')
+        ->andWhere('e.dateDebut > :dateDebut')
+        //->orderBy('e.lastname ASC')
+        ->setParameter('dateDebut', $dateDebut)
+        ->setParameter('dateFin', $dateFin);
+        $query = $queryBuilder->getQuery();
+        $employeesDate = $query->getResult();
+
+        return $employeesDate;
+    }
 }
