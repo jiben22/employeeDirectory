@@ -4,7 +4,14 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use GuzzleHttp\Client;
+
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\HttpFoundation\AcceptHeader;
 
 class APIController extends Controller
 {
@@ -42,5 +49,28 @@ class APIController extends Controller
             'longitude' => $longitude,
             'latitude' => $latitude,
         ));
+    }
+
+    /**
+     * @Route("/api/list", name="api_list")
+     */
+    public function apiListAction()
+    {
+        $employees = $this
+        ->getDoctrine()
+        ->getRepository('AppBundle:Employee')
+        //->findAll();
+        ->find(28196);
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setIgnoredAttributes(array('skills'));
+        $encoder = new JsonEncoder();
+
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $jsonContent = $serializer->serialize($employees, 'json');
+ 
+        $response = new Response($jsonContent);
+        //$response->header->set('Content-Type', 'json');
+        return new $response;
     }
 }
