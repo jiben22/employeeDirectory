@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Environment
@@ -25,6 +26,7 @@ class Environment
      * @var string
      *
      * @ORM\Column(name="building", type="string", length=255)
+     * @Groups({"details"})
      */
     private $building;
 
@@ -32,6 +34,7 @@ class Environment
      * @var int
      *
      * @ORM\Column(name="postal_code", type="integer")
+     * @Groups({"details"})
      */
     private $postalCode;
 
@@ -39,6 +42,7 @@ class Environment
      * @var string
      *
      * @ORM\Column(name="deskroom", type="string", length=255)
+     * @Groups({"details"})
      */
     private $deskroom;
 

@@ -27,7 +27,7 @@ class Skill
      * @var string
      *
      * @ORM\Column(name="denomination", type="string", length=255)
-     * @Groups({"admins"})
+     * @Groups({"details"})
      */
     private $denomination;
 

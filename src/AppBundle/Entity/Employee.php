@@ -30,7 +30,7 @@ class Employee
      *
      * @ORM\Column(name="firstname", type="string", length=64)
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai prénom !"
-     * @Groups({"users"})
+     * @Groups({"users", "list"})
      */
     private $firstname;
 
@@ -39,7 +39,7 @@ class Employee
      *
      * @ORM\Column(name="lastname", type="string", length=64)
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai nom !"
-     * @Groups({"users"})
+     * @Groups({"users", "list"})
      */
     private $lastname;
 
@@ -48,7 +48,7 @@ class Employee
      *
      * @ORM\Column(name="age", type="integer")
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai age !"
-     * @Groups({"users"})
+     * @Groups({"users", "details"})
      */
     private $age;
 
@@ -57,7 +57,7 @@ class Employee
      *
      * @ORM\Column(name="job", type="string", length=255)
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai job !"
-     * @Groups({"admins"})
+     * @Groups({"admins", "list", "details"})
      */
     private $job;
 
@@ -66,7 +66,7 @@ class Employee
      *
      * @ORM\Column(name="phone", type="string", length=255)
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai numéro de téléphone !"
-     * @Groups({"admins"})
+     * @Groups({"admins", "list", "details"})
      */
     private $phone;
 
@@ -74,6 +74,7 @@ class Employee
      * @var date
      *
      * @ORM\Column(name="dateDebut", type="date")
+     * @Groups({"details"})
      */
     private $dateDebut;
 
@@ -81,19 +82,20 @@ class Employee
      * @var date
      *
      * @ORM\Column(name="dateFin", type="date")
+     * @Groups({"details"})
      */
     private $dateFin;
 
     /**
      * @ORM\OneToOne(targetEntity="Environment", cascade={"persist"})
      * @Assert\NotBlank(), message = "Veuillez indiquer une vrai localisation !"
-     * @Groups({"admins"})
+     * @Groups({"details"})
      */
     private $environment;
 
     /**
      * @ORM\OneToMany(targetEntity="Skill", mappedBy="employee")
-     * @Groups({"admins"})
+     * @Groups({"details"})
      */
     public $skills;
 
