@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +21,7 @@ class Employee
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"admins"})
      */
     private $id;
 
@@ -28,6 +30,7 @@ class Employee
      *
      * @ORM\Column(name="firstname", type="string", length=64)
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai prénom !"
+     * @Groups({"users"})
      */
     private $firstname;
 
@@ -36,6 +39,7 @@ class Employee
      *
      * @ORM\Column(name="lastname", type="string", length=64)
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai nom !"
+     * @Groups({"users"})
      */
     private $lastname;
 
@@ -44,6 +48,7 @@ class Employee
      *
      * @ORM\Column(name="age", type="integer")
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai age !"
+     * @Groups({"users"})
      */
     private $age;
 
@@ -52,6 +57,7 @@ class Employee
      *
      * @ORM\Column(name="job", type="string", length=255)
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai job !"
+     * @Groups({"admins"})
      */
     private $job;
 
@@ -60,6 +66,7 @@ class Employee
      *
      * @ORM\Column(name="phone", type="string", length=255)
      * @Assert\NotBlank(), message = "Veuillez indiquer un vrai numéro de téléphone !"
+     * @Groups({"admins"})
      */
     private $phone;
 
@@ -80,11 +87,13 @@ class Employee
     /**
      * @ORM\OneToOne(targetEntity="Environment", cascade={"persist"})
      * @Assert\NotBlank(), message = "Veuillez indiquer une vrai localisation !"
+     * @Groups({"admins"})
      */
     private $environment;
 
     /**
      * @ORM\OneToMany(targetEntity="Skill", mappedBy="employee")
+     * @Groups({"admins"})
      */
     public $skills;
 

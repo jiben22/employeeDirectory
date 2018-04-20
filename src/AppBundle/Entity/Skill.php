@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Skills
@@ -18,6 +19,7 @@ class Skill
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"admins"})
      */
     private $id;
 
@@ -25,11 +27,13 @@ class Skill
      * @var string
      *
      * @ORM\Column(name="denomination", type="string", length=255)
+     * @Groups({"admins"})
      */
     private $denomination;
 
     /**
      * @ORM\ManyToOne(targetEntity="Employee", inversedBy="skills")
+     * @Groups({"admins"})
      */
     private $employee;
 
